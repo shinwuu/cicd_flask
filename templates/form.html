@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Input Form</title>
+</head>
+<body>
+    <h1>User Input Form</h1>
+    <form method="post" action="/">
+        <label for="ipv4">IPv4:</label>
+        <input type="text" id="ipv4" name="ipv4" required value="{{ ipv4 }}" {% if ipv4_error %}style="color: lightgray;"{% endif %} placeholder="e.g., 192.168.0.1">
+        {% if ipv4_error %}
+        <span style="color: red">{{ ipv4_error }}</span>
+        {% endif %}
+        <br><br>
+
+        <label for="subnet">Subnet:</label>
+        <input type="text" id="subnet" name="subnet" required value="{{ subnet }}" {% if subnet_error %}style="color: lightgray;"{% endif %} placeholder="e.g., 255.255.255.0">
+        {% if subnet_error %}
+        <span style="color: red">{{ subnet_error }}</span>
+        {% endif %}
+        <br><br>
+
+        <label for="gateway_ipv4">Gateway:</label>
+        <input type="text" id="gateway_ipv4" name="gateway_ipv4" required value="{{ gateway }}" {% if gateway_error %}style="color: lightgray;"{% endif %} placeholder="e.g., 192.168.0.1">
+        {% if gateway_error %}
+        <span style="color: red">{{ gateway_error }}</span>
+        {% endif %}
+        <br><br>
+
+        <input type="submit" value="Submit" {% if disable_submit %}disabled{% endif %}>
+        {% if disable_submit %}
+        <p>Submit button disabled. Remaining time: {{ remaining_time }} seconds.</p>
+        {% endif %}
+
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+
+    <div id="display-box">
+        {% if result %}
+        <h2>User Input:</h2>
+        <p>Appliance IPv4: {{ result.ipv4 }}</p>
+        <p>Appliance Subnet: {{ result.subnet }}</p>
+        <p>Appliance Gateway: {{ result.gateway }}</p>
+        {% endif %}
+    </div>
+
+    <script>
+        function clearForm() {
+            document.getElementById("ipv4").value = "";
+            document.getElementById("subnet").value = "";
+            document.getElementById("gateway_ipv4").value = "";
+
+            // Reload the page to enable the submit button
+            location.reload();
+        }
+    </script>
+</body>
+</html>
