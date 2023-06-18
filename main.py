@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
 app.secret_key = 'AB'
-conn = create_connection()
+# conn = create_connection()
 
 invalid_counts = {
     'ipv4': 0,
