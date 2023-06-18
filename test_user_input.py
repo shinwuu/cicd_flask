@@ -11,7 +11,6 @@ Unit Tests are extremely important in the SSDLC
 from datetime import datetime, timedelta
 from flask import Flask
 from flask.testing import FlaskClient
-from flask import Markup
 
 from main import app, validate_ipv4, validate_subnet, validate_gateway
 
