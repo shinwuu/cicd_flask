@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from flask import Flask, render_template, request, session
-from postgres.db import create_connection
+# from postgres.db import create_connection
 
 app = Flask(__name__)
 app.secret_key = 'AB'
